@@ -5,10 +5,17 @@ public class Employee {
 	private long id;
 	private String firstname;
 	private String lastname;
-	private String birthDate;
-	
+	private int pesel;
+			
 	public Employee(){
 		
+	}
+	
+	public Employee(String firstname, String lastname, int pesel){
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.pesel = pesel;	
 	}
 	
 	public long getId() {
@@ -29,10 +36,10 @@ public class Employee {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public String getBirthDate() {
-		return birthDate;
+	public int getPesel() {
+		return pesel;
 	}
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
+	public void setPesel(int pesel) {
+		this.pesel = pesel;
 	}
 }

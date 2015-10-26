@@ -7,6 +7,10 @@ public class Product {
 	private int price;
 	private String category;
 	
+	public Product(){
+		
+	}
+	
 	public long getId() {
 		return id;
 	}
