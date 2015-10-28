@@ -17,14 +17,24 @@ public class ClientManagerTest {
 	public void checkAdding(){
 		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
 		
-		clientManager.deleteAllEmployees();
-		assertEquals(1,clientManager.addEmployee(client));
+		clientManager.deleteAllClients();
+		assertEquals(1,clientManager.addClient(client));
 		
-		List<Client> clients = clientManager.getAllEmployees();
-		Client employeeRetrieved = clients.get(0);
+		List<Client> clients = clientManager.getAllClients();
+		Client clientRetrieved = clients.get(0);
 		
-		assertEquals(FIRSTNAME, employeeRetrieved.getFirstname());
-		assertEquals(LASTNAME, employeeRetrieved.getLastname());
-		assertEquals(PESEL, employeeRetrieved.getPesel());
+		assertEquals(FIRSTNAME, clientRetrieved.getFirstname());
+		assertEquals(LASTNAME, clientRetrieved.getLastname());
+		assertEquals(PESEL, clientRetrieved.getPesel());
+	}
+	
+	@Test
+	public void checkDeletingAllClients(){
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		
+		clientManager.addClient(client);
+		clientManager.deleteAllClients();
+		List<Client> clients = clientManager.getAllClients();
+		assertNotNull(clients);
 	}
 }
