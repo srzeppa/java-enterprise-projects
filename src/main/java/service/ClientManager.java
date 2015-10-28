@@ -17,7 +17,7 @@ public class ClientManager {
 	private PreparedStatement deleteEmployeeStmt;
 	private PreparedStatement deleteAllEmployeesStmt;
 	private PreparedStatement getAllEmployeeStmt;
-	private ConnectionManager connectionManager;
+	private ConnectionManager connectionManager = new ConnectionManager();
 	private Connection connect;
 
 	private Statement statement;
