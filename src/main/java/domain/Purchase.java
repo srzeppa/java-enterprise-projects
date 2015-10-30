@@ -7,6 +7,16 @@ public class Purchase {
 	private String date;
 	private long idClient;
 	
+	public Purchase(){
+		
+	}
+	
+	public Purchase(int price, String date, long idClient){
+		this.price = price;
+		this.date = date;
+		this.idClient = idClient;
+	}
+	
 	public long getId() {
 		return id;
 	}
