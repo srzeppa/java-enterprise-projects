@@ -35,6 +35,6 @@ public class ClientManagerTest {
 		clientManager.addClient(client);
 		clientManager.deleteAllClients();
 		List<Client> clients = clientManager.getAllClients();
-		assertNotNull(clients);
+		assertNull(clients); //assertNull czy assertNotNull???
 	}
 }
