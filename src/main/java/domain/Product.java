@@ -6,9 +6,17 @@ public class Product {
 	private String productName;
 	private int price;
 	private String category;
+	private boolean isAvaiable;
 	
 	public Product(){
 		
+	}
+	
+	public Product(String productName, int price, String category, boolean isAvaiable){
+		this.productName = productName;
+		this.price = price;
+		this.category = category;
+		this.isAvaiable = isAvaiable;
 	}
 	
 	public long getId() {
@@ -34,5 +42,11 @@ public class Product {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public void setIsAvaiable(boolean isAvaiable){
+		this.isAvaiable = isAvaiable;
+	}
+	public boolean getIsAvaiable(){
+		return isAvaiable;
 	}
 }
