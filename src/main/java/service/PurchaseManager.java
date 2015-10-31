@@ -16,7 +16,8 @@ public class PurchaseManager {
 	private PreparedStatement addPurchaseStmt;
 	private PreparedStatement deleteAllPurchasesStmt;
 	private PreparedStatement getAllPurchasesStmt;
-	private PreparedStatement getAllPurchasesByClient;
+	private PreparedStatement getAllPurchasesByClientStmt;
+	private PreparedStatement deleteAllPurchasesByClientStmt;
 	private ConnectionManager connectionManager = new ConnectionManager();
 	private Connection connect;
 
@@ -43,7 +44,8 @@ public class PurchaseManager {
 			addPurchaseStmt = connect.prepareStatement("INSERT INTO purchase (price, date, idclient) VALUES (?, ?, ?)");
 			getAllPurchasesStmt = connect.prepareStatement("SELECT * FROM purchase");
 			deleteAllPurchasesStmt = connect.prepareStatement("DELETE FROM purchase");
-			getAllPurchasesByClient = connect.prepareStatement("SELECT * FROM purchase WHERE idClient = ?");
+			getAllPurchasesByClientStmt = connect.prepareStatement("SELECT * FROM purchase WHERE idClient = ?");
+			deleteAllPurchasesByClientStmt = connect.prepareStatement("DELETE FROM purchase WHERE idClient = ?");
 			
 		} catch (SQLException ex){
 			ex.printStackTrace();
@@ -72,10 +74,39 @@ public class PurchaseManager {
 		}
 	}
 	
+	public void deleteAllPurchasesByClient(long idClient){
+		try {
+			deleteAllPurchasesByClientStmt.setLong(1, idClient);
+			deleteAllPurchasesByClientStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public List<Purchase> getAllPurchases(){
 		List<Purchase> purchases = new ArrayList<Purchase>();
 		try {
 			ResultSet rs = getAllPurchasesStmt.executeQuery();
+
+			while (rs.next()) {
+				Purchase pu = new Purchase();
+				pu.setId(rs.getInt("id"));
+				pu.setPrice(rs.getInt("price"));
+				pu.setDate(rs.getString("date"));
+				pu.setIdClient(rs.getInt("idclient"));
+				purchases.add(pu);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return purchases;
+	}
+	
+	public List<Purchase> getAllPurchasesByClient(long idClient){
+		List<Purchase> purchases = new ArrayList<Purchase>();
+		try {
+			getAllPurchasesByClientStmt.setLong(1, idClient);
+			ResultSet rs = getAllPurchasesByClientStmt.executeQuery();
 
 			while (rs.next()) {
 				Purchase pu = new Purchase();

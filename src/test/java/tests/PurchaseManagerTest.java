@@ -42,9 +42,21 @@ public class PurchaseManagerTest {
 	}
 	
 	@Test
+	public void checkDeletingAllPurchasesByClient(){
+		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.deleteAllPurchasesByClient(IDCLIENT);
+		List<Purchase> purchases = purchaseManager.getAllPurchases();
+		assertEquals(0,purchases.size());
+	}
+	
+	@Test
 	public void checkGettingAllPurchases(){
 		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
 		
+		purchaseManager.deleteAllPurchases();
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.addPurchase(purchase);
@@ -52,6 +64,21 @@ public class PurchaseManagerTest {
 		purchaseManager.addPurchase(purchase);
 		
 		List<Purchase> purchases = purchaseManager.getAllPurchases();
+		assertEquals(5,purchases.size());
+	}
+	
+	@Test
+	public void checkGettingAllPurchasesByClient(){
+		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		
+		purchaseManager.deleteAllPurchases();
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.addPurchase(purchase);
+		purchaseManager.addPurchase(purchase);
+		
+		List<Purchase> purchases = purchaseManager.getAllPurchasesByClient(IDCLIENT);
 		assertEquals(5,purchases.size());
 	}
 
