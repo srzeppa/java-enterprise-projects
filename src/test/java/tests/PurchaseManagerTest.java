@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import domain.Client;
 import domain.Purchase;
 import service.PurchaseManager;
 
