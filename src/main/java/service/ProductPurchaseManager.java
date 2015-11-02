@@ -43,13 +43,13 @@ public class ProductPurchaseManager {
 				statement.executeUpdate(ALTER_TABLE_PRODUCT_PURCHASE2);
 			}
 			
-			addProductPurchaseStmt = connect.prepareStatement("INSERT INTO productpurchase (price, date, idclient) VALUES (?, ?, ?)");
-			getAllPurchasesStmt = connect.prepareStatement("SELECT * FROM purchase");
-			deleteAllProductPurchasesStmt = connect.prepareStatement("DELETE FROM purchase");
-			getAllProductsByPurchasesStmt = connect.prepareStatement("SELECT * FROM purchase WHERE idClient = ?");
-			deleteAllProductPurchasesStmt = connect.prepareStatement("DELETE FROM purchase WHERE idClient = ?");
-			getAllPurchasesByProductStmt = connect.prepareStatement("SELECT * FROM purchase WHERE idClient = ?");
-			deleteAllPurchasesByProductStmt = connect.prepareStatement("DELETE FROM purchase WHERE idClient = ?");
+			addProductPurchaseStmt = connect.prepareStatement("INSERT INTO productpurchase (idproduct, idpurchase, summary) VALUES (?, ?, ?)");
+			getAllPurchasesStmt = connect.prepareStatement("SELECT * FROM productpurchase");
+			deleteAllProductPurchasesStmt = connect.prepareStatement("DELETE FROM productpurchase");
+			getAllProductsByPurchasesStmt = connect.prepareStatement("SELECT * FROM productpurchase WHERE idpurchase = ?");
+			deleteAllProductPurchasesStmt = connect.prepareStatement("DELETE FROM productpurchase WHERE idpurchase = ?");
+			getAllPurchasesByProductStmt = connect.prepareStatement("SELECT * FROM productpurchase WHERE idproduct = ?");
+			deleteAllPurchasesByProductStmt = connect.prepareStatement("DELETE FROM productpurchase WHERE idproduct = ?");
 			
 		} catch (SQLException ex){
 			ex.printStackTrace();
