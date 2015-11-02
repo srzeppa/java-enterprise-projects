@@ -46,6 +46,7 @@ public class ProductManagerTest {
 	public void checkGettingAllProducts(){
 		Product product = new Product(PRODUCTNAME, PRICE, CATEGORY, ISAVAIABLE);
 		
+		productManager.deleteAllProducts();
 		productManager.addProduct(product);
 		productManager.addProduct(product);
 		productManager.addProduct(product);

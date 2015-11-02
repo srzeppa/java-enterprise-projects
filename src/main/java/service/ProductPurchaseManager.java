@@ -8,7 +8,9 @@ import java.sql.Statement;
 
 public class ProductPurchaseManager {
 
-	private final String CREATE_TABLE_PRODUCTPURCHASE = "CREATE TABLE productpurchase(idproduct bigint REFERENCES product(id) ON DELETE CASCADE, idpurchase bigint REFERENCES purchase(id) ON DELETE CASCADE)";
+	private final String ALTER_TABLE_PRODUCT_PURCHASE = "ALTER TABLE ProductPurchase ADD COINSTRAINT idProductfk FOREIGN KEY (idproduct) REFERENCES product(id) ON DELETE CASCADE";
+	private final String ALTER_TABLE_PRODUCT_PURCHASE2 = "ALTER TABLE ProductPurchase ADD COINSTRAINT idPurchasefk FOREIGN KEY (idpurchase) REFERENCES purchase(id) ON DELETE CASCADE";
+	private final String CREATE_TABLE_PRODUCTPURCHASE = "CREATE TABLE productpurchase(idproduct bigint, idpurchase bigint)";
 	private PreparedStatement addProductPurchaseStmt;
 	private PreparedStatement deleteAllProductPurchasesStmt;
 	private PreparedStatement getAllPurchasesStmt;
@@ -37,6 +39,8 @@ public class ProductPurchaseManager {
 	
 			if (!tableExists){
 				statement.executeUpdate(CREATE_TABLE_PRODUCTPURCHASE);
+				statement.executeUpdate(ALTER_TABLE_PRODUCT_PURCHASE);
+				statement.executeUpdate(ALTER_TABLE_PRODUCT_PURCHASE2);
 			}
 			
 			addProductPurchaseStmt = connect.prepareStatement("INSERT INTO productpurchase (price, date, idclient) VALUES (?, ?, ?)");
@@ -50,6 +54,39 @@ public class ProductPurchaseManager {
 		} catch (SQLException ex){
 			ex.printStackTrace();
 		}
+	}
+	
+	public int addProductPurchase(){
+		int count = 0;
+		return count;
+	}
+	
+	public void getAllPurchases(){
+		
+	}
+	
+	public void getAllPurchasesByProduct(){
+		
+	}
+	
+	public void getAllProductsByPurchase(){
+		
+	}
+	
+	public void deleteAllProductPurchases(){
+		try {
+			deleteAllProductPurchasesStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteAllPurchasesByProduct(){
+		
+	}
+	
+	public void deleteAllProductsByPurchase(){
+		
 	}
 	
 }

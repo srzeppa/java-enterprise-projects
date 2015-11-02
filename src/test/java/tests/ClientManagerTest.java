@@ -13,6 +13,10 @@ public class ClientManagerTest {
 	private final static String LASTNAME = "Ziomek";
 	private final static int PESEL = 12342331;
 	
+	private final static String UPDATEDFIRSTNAME = "Zbyniu";
+	private final static String UPDATEDLASTNAME = "Bubel";
+	private final static int UPDATEDPESEL = 999999;
+	
 	@Test
 	public void checkAdding(){
 		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
@@ -50,5 +54,20 @@ public class ClientManagerTest {
 		
 		List<Client> clients = clientManager.getAllClients();
 		assertEquals(5,clients.size());
+	}
+	
+	@Test
+	public void checkUpdateClient(){
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME, LASTNAME, PESEL);
+		Client clientForUpdate = new Client(UPDATEDFIRSTNAME,UPDATEDLASTNAME,UPDATEDPESEL);
+		long id;
+		
+		clientManager.addClient(client);
+		List<Client> clientBeforeUpdate = clientManager.getAllClients();
+		id = clientBeforeUpdate.get(0).getId();
+		
+		clientManager.updateClientById(clientForUpdate, id);
+		List<Client> clientAfterUpdate = clientManager.getAllClients();
 	}
 }

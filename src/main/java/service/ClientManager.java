@@ -1,7 +1,6 @@
 package service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +15,8 @@ public class ClientManager {
 	private PreparedStatement addClientStmt;
 	private PreparedStatement deleteAllClientsStmt;
 	private PreparedStatement getAllClientStmt;
+	private PreparedStatement deleteClientByIdStmt;
+	private PreparedStatement updateClientByIdStmt;
 	private ConnectionManager connectionManager = new ConnectionManager();
 	private Connection connect;
 
@@ -42,6 +43,8 @@ public class ClientManager {
 			addClientStmt = connect.prepareStatement("INSERT INTO client (firstname, lastname, pesel) VALUES (?, ?, ?)");
 			getAllClientStmt = connect.prepareStatement("SELECT id,firstname,lastname,pesel FROM client");
 			deleteAllClientsStmt = connect.prepareStatement("DELETE FROM client");
+			deleteClientByIdStmt = connect.prepareStatement("DELETE FROM client WHERE id = ?");
+			updateClientByIdStmt = connect.prepareStatement("UPDATE client SET firstname = ?, lastname = ?, pesel = ? WHERE id = ?");
 			
 		} catch (SQLException ex){
 			ex.printStackTrace();
@@ -87,5 +90,28 @@ public class ClientManager {
 			e.printStackTrace();
 		}
 		return clients;
+	}
+	
+	public void deleteClientById(long idClient){
+		try {
+			deleteClientByIdStmt.setLong(1, idClient);
+			deleteClientByIdStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int updateClientById(Client client, long idClient){
+		int count = 0;
+		try {
+			updateClientByIdStmt.setString(1, client.getFirstname());
+			updateClientByIdStmt.setString(2, client.getLastname());
+			updateClientByIdStmt.setInt(3, client.getPesel());
+			updateClientByIdStmt.setLong(4, idClient);
+			count = updateClientByIdStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }
