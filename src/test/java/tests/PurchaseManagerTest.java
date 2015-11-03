@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import domain.Client;
 import domain.Purchase;
+import service.ClientManager;
 import service.PurchaseManager;
 
 public class PurchaseManagerTest {
@@ -17,9 +18,21 @@ public class PurchaseManagerTest {
 	private final static String DATE = "2000-10-10";
 	private final static long IDCLIENT = 6;
 	
+	ClientManager clientManager = new ClientManager();
+	private final static String FIRSTNAME = "Jurek";
+	private final static String LASTNAME = "Ziomek";
+	private final static int PESEL = 12342331;
+	
 	@Test
 	public void checkAdding(){
-		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		long idClient;
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		clientManager.addClient(client);
+		List<Client> clients = clientManager.getAllClients();
+		idClient = clients.get(0).getId();
+		
+		Purchase purchase = new Purchase(PRICE,DATE,idClient);
 		
 		purchaseManager.deleteAllPurchases();
 		assertEquals(1,purchaseManager.addPurchase(purchase));
@@ -29,12 +42,19 @@ public class PurchaseManagerTest {
 		
 		assertEquals(PRICE, purchaseRetrieved.getPrice());
 		assertEquals(DATE, purchaseRetrieved.getDate());
-		assertEquals(IDCLIENT, purchaseRetrieved.getIdClient());
+		assertEquals(idClient, purchaseRetrieved.getIdClient());
 	}
 	
 	@Test
 	public void checkDeletingAllPurchases(){
-		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		long idClient;
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		clientManager.addClient(client);
+		List<Client> clients = clientManager.getAllClients();
+		idClient = clients.get(0).getId();
+		
+		Purchase purchase = new Purchase(PRICE,DATE,idClient);
 		
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.deleteAllPurchases();
@@ -44,18 +64,31 @@ public class PurchaseManagerTest {
 	
 	@Test
 	public void checkDeletingAllPurchasesByClient(){
-		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		long idClient;
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		clientManager.addClient(client);
+		List<Client> clients = clientManager.getAllClients();
+		idClient = clients.get(0).getId();
+		
+		Purchase purchase = new Purchase(PRICE,DATE,idClient);
 		
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.addPurchase(purchase);
-		purchaseManager.deleteAllPurchasesByClient(IDCLIENT);
+		purchaseManager.deleteAllPurchasesByClient(idClient);
 		List<Purchase> purchases = purchaseManager.getAllPurchases();
 		assertEquals(0,purchases.size());
 	}
 	
 	@Test
 	public void checkGettingAllPurchases(){
-		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		long idClient;
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		clientManager.addClient(client);
+		List<Client> clients = clientManager.getAllClients();
+		idClient = clients.get(0).getId();
+		Purchase purchase = new Purchase(PRICE,DATE,idClient);
 		
 		purchaseManager.deleteAllPurchases();
 		purchaseManager.addPurchase(purchase);
@@ -70,7 +103,14 @@ public class PurchaseManagerTest {
 	
 	@Test
 	public void checkGettingAllPurchasesByClient(){
-		Purchase purchase = new Purchase(PRICE,DATE,IDCLIENT);
+		long idClient;
+		clientManager.deleteAllClients();
+		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
+		clientManager.addClient(client);
+		List<Client> clients = clientManager.getAllClients();
+		idClient = clients.get(0).getId();
+		
+		Purchase purchase = new Purchase(PRICE,DATE,idClient);
 		
 		purchaseManager.deleteAllPurchases();
 		purchaseManager.addPurchase(purchase);
@@ -79,7 +119,7 @@ public class PurchaseManagerTest {
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.addPurchase(purchase);
 		
-		List<Purchase> purchases = purchaseManager.getAllPurchasesByClient(IDCLIENT);
+		List<Purchase> purchases = purchaseManager.getAllPurchasesByClient(idClient);
 		assertEquals(5,purchases.size());
 	}
 

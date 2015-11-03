@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import domain.Client;
+import domain.ProductPurchase;
 
 public class ProductPurchaseManager {
 
@@ -61,8 +66,23 @@ public class ProductPurchaseManager {
 		return count;
 	}
 	
-	public void getAllPurchases(){
+	public List<ProductPurchase> getAllPurchases(){
+		List<ProductPurchase> productPurchases = new ArrayList<ProductPurchase>();
+		try {
+			ResultSet rs = getAllPurchasesStmt.executeQuery();
+
+			while (rs.next()) {
+				ProductPurchase pp = new ProductPurchase();
+				pp.setIdProduct(rs.getLong("idproduct"));
+				pp.setIdPurchase(rs.getLong("idpurchase"));
+				pp.setSummary(rs.getInt("summary"));
+				productPurchases.add(pp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return productPurchases;
 	}
 	
 	public void getAllPurchasesByProduct(){
