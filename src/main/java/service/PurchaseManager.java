@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.Client;
 import domain.Purchase;
 
 public class PurchaseManager {
@@ -76,9 +77,9 @@ public class PurchaseManager {
 		}
 	}
 	
-	public void deleteAllPurchasesByClient(long idClient){
+	public void deleteAllPurchasesByClient(Client idClient){
 		try {
-			deleteAllPurchasesByClientStmt.setLong(1, idClient);
+			deleteAllPurchasesByClientStmt.setLong(1, idClient.getId());
 			deleteAllPurchasesByClientStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -104,10 +105,10 @@ public class PurchaseManager {
 		return purchases;
 	}
 	
-	public List<Purchase> getAllPurchasesByClient(long idClient){
+	public List<Purchase> getAllPurchasesByClient(Client idClient){
 		List<Purchase> purchases = new ArrayList<Purchase>();
 		try {
-			getAllPurchasesByClientStmt.setLong(1, idClient);
+			getAllPurchasesByClientStmt.setLong(1, idClient.getId());
 			ResultSet rs = getAllPurchasesByClientStmt.executeQuery();
 
 			while (rs.next()) {
@@ -115,7 +116,7 @@ public class PurchaseManager {
 				pu.setId(rs.getInt("id"));
 				pu.setPrice(rs.getInt("price"));
 				pu.setDate(rs.getString("date"));
-				pu.setIdClient(rs.getInt("idclient"));
+				pu.setIdClient(idClient.getId());
 				purchases.add(pu);
 			}
 		} catch (SQLException e) {
@@ -123,5 +124,4 @@ public class PurchaseManager {
 		}
 		return purchases;
 	}
-
 }

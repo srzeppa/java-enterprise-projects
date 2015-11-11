@@ -92,22 +92,22 @@ public class ClientManager {
 		return clients;
 	}
 	
-	public void deleteClientById(long idClient){
+	public void deleteClientById(Client idClient){
 		try {
-			deleteClientByIdStmt.setLong(1, idClient);
+			deleteClientByIdStmt.setLong(1, idClient.getId());
 			deleteClientByIdStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public int updateClientById(Client client, long idClient){
+	public int updateClientById(Client client){
 		int count = 0;
 		try {
 			updateClientByIdStmt.setString(1, client.getFirstname());
 			updateClientByIdStmt.setString(2, client.getLastname());
 			updateClientByIdStmt.setInt(3, client.getPesel());
-			updateClientByIdStmt.setLong(4, idClient);
+			updateClientByIdStmt.setLong(4, client.getId());
 			count = updateClientByIdStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

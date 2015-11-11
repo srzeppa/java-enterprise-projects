@@ -64,14 +64,14 @@ public class PurchaseManagerTest {
 	
 	@Test
 	public void checkDeletingAllPurchasesByClient(){
-		long idClient;
+		Client idClient;
 		clientManager.deleteAllClients();
 		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
 		clientManager.addClient(client);
 		List<Client> clients = clientManager.getAllClients();
-		idClient = clients.get(0).getId();
+		idClient = clients.get(0);
 		
-		Purchase purchase = new Purchase(PRICE,DATE,idClient);
+		Purchase purchase = new Purchase(PRICE,DATE,idClient.getId());
 		
 		purchaseManager.addPurchase(purchase);
 		purchaseManager.addPurchase(purchase);
@@ -103,14 +103,14 @@ public class PurchaseManagerTest {
 	
 	@Test
 	public void checkGettingAllPurchasesByClient(){
-		long idClient;
+		Client idClient;
 		clientManager.deleteAllClients();
 		Client client = new Client(FIRSTNAME,LASTNAME,PESEL);
 		clientManager.addClient(client);
 		List<Client> clients = clientManager.getAllClients();
-		idClient = clients.get(0).getId();
+		idClient = clients.get(0);
 		
-		Purchase purchase = new Purchase(PRICE,DATE,idClient);
+		Purchase purchase = new Purchase(PRICE,DATE,idClient.getId());
 		
 		purchaseManager.deleteAllPurchases();
 		purchaseManager.addPurchase(purchase);
