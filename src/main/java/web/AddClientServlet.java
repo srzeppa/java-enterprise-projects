@@ -20,12 +20,13 @@ public class AddClientServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
-
-		out.println("<html><body><h2>Your data</h2>" +
+		
+		out.println("<html><body><h2>Add client</h2>" +
 				"<p>First name: " + request.getParameter("firstname") + "<br />" +
 				"<p>Last name: " + request.getParameter("lastname") + "<br />" +
 				"<p>Pesel: " + request.getParameter("pesel") + "<br />" +
 				"</body></html>");
 		out.close();
 	}
+
 }

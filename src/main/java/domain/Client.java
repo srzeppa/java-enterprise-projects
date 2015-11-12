@@ -3,9 +3,9 @@ package domain;
 public class Client {
 	
 	private long id;
-	private String firstname;
-	private String lastname;
-	private int pesel;
+	private String firstname = " ";
+	private String lastname = " ";
+	private int pesel = 0;
 			
 	public Client(){
 		

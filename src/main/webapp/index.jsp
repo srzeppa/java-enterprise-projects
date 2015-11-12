@@ -5,13 +5,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sklep sportowy</title>
+        <title>Sport shop</title>
     </head>
     <body>
-        <p>Siema eniu</p>
-        <p><a href="getClientData.jsp">Add client</a></p>
-        <p><a href="getAllClients.jsp">Get all clients</a></p>
+        <h2>Sport shop</h2>
+        <p><a href="addClientData.jsp">Add client</a></p>
         <p><a href="deleteAllClients.jsp">Delete all clients</a></p>
-        <p><a href="deleteClient.jsp">Delete client by id</a></p>
+        <p><a href="getAllClients.jsp">Show all clients</a></p>
+        <p><a href="">Update client</a></p>
+        <p><a href="">Delete client by id</a></p>
     </body>
 </html>

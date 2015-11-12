@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<jsp:useBean id="manager" class="service.ClientManager" scope="application" />
+<jsp:useBean id="storage" class="service.ClientManager" scope="application" />
 <jsp:useBean id="client" class="domain.Client" scope="session" />
 
 <form action="addClient.jsp">
 
-  First name :<input type="text" name="firstname" value="${client.firstname}" /><br />
-  Last name :<input type="text"  name="lastname" value="${client.lastname}" /><br />
-  Pesel:<input type="text"  name="pesel" value="${client.pesel}" /><br />
+  First name :<input type="text" name="firstname" value="" /><br />
+  Last name :<input type="text" name="lastname" value="" /><br />
+  Pesel :<input type="text"  name="pesel" value="" /><br />
   <input type="submit" value=" OK ">
   
 </form>
