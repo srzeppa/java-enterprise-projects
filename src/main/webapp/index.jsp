@@ -28,14 +28,23 @@
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Client<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="addClientData.jsp">Add client</a></li>
-		            <li><a href="deleteAllClients.jsp">Delete all clients</a></li>
-		            <li><a href="getAllClients.jsp">Show all clients</a></li>
+		            <li><a href="client/addClientData.jsp">Add client</a></li>
+		            <li><a href="client/deleteAllClients.jsp">Delete all clients</a></li>
+		            <li><a href="client/getAllClients.jsp">Show all clients</a></li>
 		            <li><a href="#">Update client</a></li> 
 		            <li><a href="#">Delete client by id</a></li> 
 		          </ul>
 		        </li>
-		        <li><a href="#">Product</a></li> 
+    		    <li class="dropdown">
+		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Product<span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="product/addProductData.jsp">Add product</a></li>
+		            <li><a href="product/deleteAllProducts.jsp">Delete all products</a></li>
+		            <li><a href="product/getAllProducts.jsp">Show all products</a></li>
+		            <li><a href="#">Update product</a></li> 
+		            <li><a href="#">Delete product by id</a></li> 
+		          </ul>
+		        </li>
 		        <li><a href="#">Purchase</a></li> 
 		      </ul>
 		    </div>

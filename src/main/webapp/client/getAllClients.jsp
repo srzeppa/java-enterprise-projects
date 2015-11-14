@@ -12,30 +12,6 @@
 	</head>
 	<body>
 	
-		<nav class="navbar navbar-inverse">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <p class="navbar-brand">Sports shop</p>
-		    </div>
-		    <div>
-		      <ul class="nav navbar-nav">
-		        <li class="dropdown">
-		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Client<span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="addClientData.jsp">Add client</a></li>
-		            <li><a href="deleteAllClients.jsp">Delete all clients</a></li>
-		            <li><a href="getAllClients.jsp">Show all clients</a></li>
-		            <li><a href="#">Update client</a></li> 
-		            <li><a href="#">Delete client by id</a></li> 
-		          </ul>
-		        </li>
-		        <li><a href="#">Product</a></li> 
-		        <li><a href="#">Purchase</a></li> 
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-	
 	<jsp:useBean id="manager" class="service.ClientManager" scope="application" />
 		<table border="1" style="width:100%">
 		<tr style="color:red">
