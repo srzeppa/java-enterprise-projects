@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='../webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<title>Insert title here</title>
-	</head>
-	
+<title>Insert title here</title>
+</head>
+<body>
+
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -51,22 +52,20 @@
 		    </div>
 		  </div>
 		</nav>
-	
-	<body>
-		<jsp:useBean id="product" class="domain.Product" scope="session" />
-		
-		<jsp:setProperty name="product" property="*" /> 
-		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
-		
-		<% 
-			manager.addProduct(product);
-		%>
-		
-		<p>Following product has been added to database: </p>
-		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
-		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
-		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
-		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
-	</body>
+
+<jsp:useBean id="managerProduct" class="service.ProductManager" scope="application" />
+<jsp:useBean id="product" class="domain.Product" scope="session" />
+
+<form action="updateProductById.jsp">
+  
+  ID :<input type="text" name="id" value="" /><br />
+  Product name :<input type="text" name="productName" value="" /><br />
+  Price :<input type="text" name="price" value="" /><br />
+  Category :<input type="text"  name="category" value="" /><br />
+  Is avaiable :<input type="text"  name="isAvaiable" value="" /><br />
+  <input type="submit" value=" OK ">
+  
+</form>
+
+</body>
 </html>

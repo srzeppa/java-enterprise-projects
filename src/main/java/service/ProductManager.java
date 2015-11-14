@@ -21,6 +21,7 @@ public class ProductManager {
 	private PreparedStatement addProductStmt;
 	private PreparedStatement deleteAllProductsStmt;
 	private PreparedStatement getAllProductsStmt;
+	private PreparedStatement updateProductByIdStmt;
 
 	private Statement statement;
 	
@@ -45,6 +46,7 @@ public class ProductManager {
 			addProductStmt = connect.prepareStatement("INSERT INTO product(productName,price,category,isavaiable) VALUES (?,?,?,?);");
 			getAllProductsStmt = connect.prepareStatement("SELECT * FROM product;");
 			deleteAllProductsStmt = connect.prepareStatement("DELETE FROM product;");
+			updateProductByIdStmt = connect.prepareStatement("UPDATE product SET productname = ?, price = ?, category = ?, isavaiable = ? WHERE id = ?");
 			
 		} catch (SQLException ex){
 			ex.printStackTrace();
@@ -87,6 +89,21 @@ public class ProductManager {
 			addProductStmt.setString(3, product.getCategory());
 			addProductStmt.setBoolean(4, product.getIsAvaiable());
 			count = addProductStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public int updateProductById(Product product){
+		int count = 0;
+		try {
+			updateProductByIdStmt.setString(1, product.getProductName());
+			updateProductByIdStmt.setInt(2, product.getPrice());
+			updateProductByIdStmt.setString(3, product.getCategory());
+			updateProductByIdStmt.setBoolean(4, product.getIsAvaiable());
+			updateProductByIdStmt.setLong(5, product.getId());
+			count = updateProductByIdStmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -11,12 +11,6 @@
         <title>Sport shop</title>
     </head>
     <body>
-<!--         <h2>Sport shop</h2>
-        <p><a href="addClientData.jsp">Add client</a></p>
-        <p><a href="deleteAllClients.jsp">Delete all clients</a></p>
-        <p><a href="getAllClients.jsp">Show all clients</a></p>
-        <p><a href="#">Update client</a></p>
-        <p><a href="#">Delete client by id</a></p> -->
         
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -31,7 +25,7 @@
 		            <li><a href="client/addClientData.jsp">Add client</a></li>
 		            <li><a href="client/deleteAllClients.jsp">Delete all clients</a></li>
 		            <li><a href="client/getAllClients.jsp">Show all clients</a></li>
-		            <li><a href="#">Update client</a></li> 
+		            <li><a href="client/updateClientByIdData.jsp">Update client</a></li> 
 		            <li><a href="#">Delete client by id</a></li> 
 		          </ul>
 		        </li>
@@ -41,11 +35,20 @@
 		            <li><a href="product/addProductData.jsp">Add product</a></li>
 		            <li><a href="product/deleteAllProducts.jsp">Delete all products</a></li>
 		            <li><a href="product/getAllProducts.jsp">Show all products</a></li>
-		            <li><a href="#">Update product</a></li> 
+		            <li><a href="product/updateProductByIdData.jsp">Update product</a></li> 
 		            <li><a href="#">Delete product by id</a></li> 
 		          </ul>
 		        </li>
-		        <li><a href="#">Purchase</a></li> 
+		        <li class="dropdown">
+		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Purchase<span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="purchase/addPurchaseData.jsp">Add purchase</a></li>
+		            <li><a href="purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
+		            <li><a href="purchase/getAllPurchases.jsp">Show all purchases</a></li>
+		     <!--        <li><a href="purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
+		            <li><a href="#">Delete purchase by id</a></li>  -->
+		          </ul>
+		        </li> 
 		      </ul>
 		    </div>
 		  </div>

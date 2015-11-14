@@ -9,6 +9,7 @@
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<title>Insert title here</title>
 	</head>
+	<body>
 	
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -30,19 +31,19 @@
     		    <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Product<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="addProductData.jsp">Add product</a></li>
-		            <li><a href="deleteAllProducts.jsp">Delete all products</a></li>
-		            <li><a href="getAllProducts.jsp">Show all products</a></li>
-		            <li><a href="updateProductByIdData.jsp">Update product</a></li> 
+		            <li><a href="../product/addProductData.jsp">Add product</a></li>
+		            <li><a href="../product/deleteAllProducts.jsp">Delete all products</a></li>
+		            <li><a href="../product/getAllProducts.jsp">Show all products</a></li>
+		            <li><a href="../product/updateProductByIdData.jsp">Update product</a></li> 
 		            <li><a href="#">Delete product by id</a></li> 
 		          </ul>
 		        </li>
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Purchase<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="../purchase/addPurchaseData.jsp">Add purchase</a></li>
-		            <li><a href="../purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
-		            <li><a href="../purchase/getAllPurchases.jsp">Show all purchases</a></li>
+		            <li><a href="addPurchaseData.jsp">Add purchase</a></li>
+		            <li><a href="deleteAllPurchases.jsp">Delete all purchases</a></li>
+		            <li><a href="getAllPurchases.jsp">Show all purchases</a></li>
 		     <!--        <li><a href="purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
 		            <li><a href="#">Delete purchase by id</a></li>  -->
 		          </ul>
@@ -52,21 +53,19 @@
 		  </div>
 		</nav>
 	
-	<body>
-		<jsp:useBean id="product" class="domain.Product" scope="session" />
+		<jsp:useBean id="purchase" class="domain.Purchase" scope="session" />
 		
-		<jsp:setProperty name="product" property="*" /> 
+		<jsp:setProperty name="purchase" property="*" /> 
 		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
+		<jsp:useBean id="managerPurchase" class="service.PurchaseManager" scope="application" />
 		
 		<% 
-			manager.addProduct(product);
+			managerPurchase.addPurchase(purchase);
 		%>
 		
-		<p>Following product has been added to database: </p>
-		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
-		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
-		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
-		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
+		<p>Following purchase has been added to database: </p>
+		<p>Price: <jsp:getProperty name="purchase" property="price"></jsp:getProperty></p>
+		<p>Date: <jsp:getProperty name="purchase" property="date"></jsp:getProperty></p>
+		<p>ID Client: <jsp:getProperty name="purchase" property="idClient"></jsp:getProperty></p>
 	</body>
 </html>

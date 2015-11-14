@@ -9,6 +9,7 @@
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<title>Insert title here</title>
 	</head>
+	<body>
 	
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -20,20 +21,20 @@
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Client<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="../client/addClientData.jsp">Add client</a></li>
-		            <li><a href="../client/deleteAllClients.jsp">Delete all clients</a></li>
-		            <li><a href="../client/getAllClients.jsp">Show all clients</a></li>
-		            <li><a href="../client/updateClientByIdData.jsp">Update client</a></li> 
+		            <li><a href="addClientData.jsp">Add client</a></li>
+		            <li><a href="deleteAllClients.jsp">Delete all clients</a></li>
+		            <li><a href="getAllClients.jsp">Show all clients</a></li>
+		            <li><a href="updateClientByIdData.jsp">Update client</a></li> 
 		            <li><a href="#">Delete client by id</a></li> 
 		          </ul>
 		        </li>
     		    <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Product<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="addProductData.jsp">Add product</a></li>
-		            <li><a href="deleteAllProducts.jsp">Delete all products</a></li>
-		            <li><a href="getAllProducts.jsp">Show all products</a></li>
-		            <li><a href="updateProductByIdData.jsp">Update product</a></li> 
+		            <li><a href="../product/addProductData.jsp">Add product</a></li>
+		            <li><a href="../product/deleteAllProducts.jsp">Delete all products</a></li>
+		            <li><a href="../product/getAllProducts.jsp">Show all products</a></li>
+		            <li><a href="../product/updateProductByIdData.jsp">Update product</a></li> 
 		            <li><a href="#">Delete product by id</a></li> 
 		          </ul>
 		        </li>
@@ -43,7 +44,7 @@
 		            <li><a href="../purchase/addPurchaseData.jsp">Add purchase</a></li>
 		            <li><a href="../purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
 		            <li><a href="../purchase/getAllPurchases.jsp">Show all purchases</a></li>
-		     <!--        <li><a href="purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
+		     <!--        <li><a href="../purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
 		            <li><a href="#">Delete purchase by id</a></li>  -->
 		          </ul>
 		        </li> 
@@ -51,22 +52,21 @@
 		    </div>
 		  </div>
 		</nav>
-	
-	<body>
-		<jsp:useBean id="product" class="domain.Product" scope="session" />
 		
-		<jsp:setProperty name="product" property="*" /> 
+		<jsp:useBean id="client" class="domain.Client" scope="session" />
 		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
+		<jsp:setProperty name="client" property="*" /> 
+		
+		<jsp:useBean id="managerClient" class="service.ClientManager" scope="application" />
 		
 		<% 
-			manager.addProduct(product);
+			managerClient.updateClientById(client);
 		%>
 		
-		<p>Following product has been added to database: </p>
-		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
-		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
-		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
-		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
+		<p>Following client has been updated: </p>
+		<p>ID: <jsp:getProperty name="client" property="id"></jsp:getProperty></p>
+		<p>First name: <jsp:getProperty name="client" property="firstname"></jsp:getProperty></p>
+		<p>Last name: <jsp:getProperty name="client" property="lastname"></jsp:getProperty></p>
+		<p>Pesel: <jsp:getProperty name="client" property="pesel"></jsp:getProperty></p>
 	</body>
 </html>

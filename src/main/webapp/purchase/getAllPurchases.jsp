@@ -1,3 +1,5 @@
+<%@page import="service.PurchaseManager"%>
+<%@page import="domain.Purchase"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,6 +11,7 @@
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<title>Insert title here</title>
 	</head>
+	<body>
 	
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -30,19 +33,19 @@
     		    <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Product<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="addProductData.jsp">Add product</a></li>
-		            <li><a href="deleteAllProducts.jsp">Delete all products</a></li>
-		            <li><a href="getAllProducts.jsp">Show all products</a></li>
-		            <li><a href="updateProductByIdData.jsp">Update product</a></li> 
+		            <li><a href="../product/addProductData.jsp">Add product</a></li>
+		            <li><a href="../product/deleteAllProducts.jsp">Delete all products</a></li>
+		            <li><a href="../product/getAllProducts.jsp">Show all products</a></li>
+		            <li><a href="../product/updateProductByIdData.jsp">Update product</a></li> 
 		            <li><a href="#">Delete product by id</a></li> 
 		          </ul>
 		        </li>
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Purchase<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="../purchase/addPurchaseData.jsp">Add purchase</a></li>
-		            <li><a href="../purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
-		            <li><a href="../purchase/getAllPurchases.jsp">Show all purchases</a></li>
+		            <li><a href="addPurchaseData.jsp">Add purchase</a></li>
+		            <li><a href="deleteAllPurchases.jsp">Delete all purchases</a></li>
+		            <li><a href="getAllPurchases.jsp">Show all purchases</a></li>
 		     <!--        <li><a href="purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
 		            <li><a href="#">Delete purchase by id</a></li>  -->
 		          </ul>
@@ -52,21 +55,21 @@
 		  </div>
 		</nav>
 	
-	<body>
-		<jsp:useBean id="product" class="domain.Product" scope="session" />
-		
-		<jsp:setProperty name="product" property="*" /> 
-		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
-		
-		<% 
-			manager.addProduct(product);
-		%>
-		
-		<p>Following product has been added to database: </p>
-		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
-		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
-		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
-		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
+	<jsp:useBean id="purchaseManager" class="service.PurchaseManager" scope="application" />
+		<table border="1" style="width:100%">
+		<tr style="color:red">
+			<td>Price</td>
+			<td>Date</td>
+			<td>ID Client</td>
+		</tr>
+			<% 
+			  for (Purchase purchase : purchaseManager.getAllPurchases()) {
+				  out.println("<tr>");
+				  out.println("<td>" + purchase.getPrice() + "</td><td>" + purchase.getDate() + "</td><td>" + purchase.getIdClient() + "</td>");
+				  out.println("</tr>");
+			  }
+			  out.close();
+			%>
+		</table>
 	</body>
 </html>

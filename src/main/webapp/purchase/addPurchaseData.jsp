@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='../webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<title>Insert title here</title>
-	</head>
-	
+<title>Insert title here</title>
+</head>
+<body>
+
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
@@ -30,19 +31,19 @@
     		    <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Product<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="addProductData.jsp">Add product</a></li>
-		            <li><a href="deleteAllProducts.jsp">Delete all products</a></li>
-		            <li><a href="getAllProducts.jsp">Show all products</a></li>
-		            <li><a href="updateProductByIdData.jsp">Update product</a></li> 
+		            <li><a href="../product/addProductData.jsp">Add product</a></li>
+		            <li><a href="../product/deleteAllProducts.jsp">Delete all products</a></li>
+		            <li><a href="../product/getAllProducts.jsp">Show all products</a></li>
+		            <li><a href="../product/updateProductByIdData.jsp">Update product</a></li> 
 		            <li><a href="#">Delete product by id</a></li> 
 		          </ul>
 		        </li>
 		        <li class="dropdown">
 		          <a class="dropdown-toggle" data-toggle="dropdown" href="">Purchase<span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="../purchase/addPurchaseData.jsp">Add purchase</a></li>
-		            <li><a href="../purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
-		            <li><a href="../purchase/getAllPurchases.jsp">Show all purchases</a></li>
+		            <li><a href="addPurchaseData.jsp">Add purchase</a></li>
+		            <li><a href="deleteAllPurchases.jsp">Delete all purchases</a></li>
+		            <li><a href="getAllPurchases.jsp">Show all purchases</a></li>
 		     <!--        <li><a href="purchase/updatePurchaseByIdData.jsp">Update purchase</a></li> 
 		            <li><a href="#">Delete purchase by id</a></li>  -->
 		          </ul>
@@ -51,22 +52,18 @@
 		    </div>
 		  </div>
 		</nav>
-	
-	<body>
-		<jsp:useBean id="product" class="domain.Product" scope="session" />
-		
-		<jsp:setProperty name="product" property="*" /> 
-		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
-		
-		<% 
-			manager.addProduct(product);
-		%>
-		
-		<p>Following product has been added to database: </p>
-		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
-		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
-		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
-		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
-	</body>
+
+<jsp:useBean id="purchaseManager" class="service.PurchaseManager" scope="application" />
+<jsp:useBean id="purchase" class="domain.Purchase" scope="session" />
+
+<form action="addPurchase.jsp">
+
+  Price :<input type="text" name="price" value="" /><br />
+  Date :<input type="text" name="date" value="" /><br />
+  ID Client :<input type="text"  name="idClient" value="" /><br />
+  <input type="submit" value=" OK ">
+  
+</form>
+
+</body>
 </html>

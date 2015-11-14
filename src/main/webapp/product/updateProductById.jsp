@@ -9,6 +9,7 @@
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<title>Insert title here</title>
 	</head>
+	<body>
 	
 		<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
@@ -52,21 +53,22 @@
 		  </div>
 		</nav>
 	
-	<body>
 		<jsp:useBean id="product" class="domain.Product" scope="session" />
 		
 		<jsp:setProperty name="product" property="*" /> 
 		
-		<jsp:useBean id="manager" class="service.ProductManager" scope="application" />
+		<jsp:useBean id="managerProduct" class="service.ProductManager" scope="application" />
 		
 		<% 
-			manager.addProduct(product);
+			managerProduct.updateProductById(product);
 		%>
 		
-		<p>Following product has been added to database: </p>
+		<p>Following product has been updated: </p>
+		<p>ID: <jsp:getProperty name="product" property="id"></jsp:getProperty></p>
 		<p>Product name: <jsp:getProperty name="product" property="productName"></jsp:getProperty></p>
 		<p>Price: <jsp:getProperty name="product" property="price"></jsp:getProperty></p>
 		<p>Category: <jsp:getProperty name="product" property="category"></jsp:getProperty></p>
 		<p>Is avaiable: <jsp:getProperty name="product" property="isAvaiable"></jsp:getProperty></p>
+		
 	</body>
 </html>
