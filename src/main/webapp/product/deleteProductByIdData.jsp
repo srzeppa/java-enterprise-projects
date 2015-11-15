@@ -56,14 +56,13 @@
 <jsp:useBean id="managerProduct" class="service.ProductManager" scope="application" />
 <jsp:useBean id="product" class="domain.Product" scope="session" />
 
-<form action="updateProductById.jsp">
-  
-  ID :<input type="text" name="id" value="" /><br />
-  Product name :<input type="text" name="productName" value="" /><br />
-  Price :<input type="text" name="price" value="" /><br />
-  Category :<input type="text"  name="category" value="" /><br />
-  Is avaiable :<input type="text"  name="isAvaiable" value="" /><br />
-  <input type="submit" value=" OK ">
+<form action="deleteProductById.jsp">
+
+	Product id :<input type="text" name="id" value="" /><br />
+<!-- 	Price :<input type="text" name="price" value="" /><br />
+	Category :<input type="text"  name="category" value="" /><br />
+	Is avaiable :<input type="checkbox"  name="isAvaiable" value="" /><br /> -->
+	<input type="submit" value=" OK ">
   
 </form>
 

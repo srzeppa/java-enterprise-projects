@@ -26,7 +26,7 @@
 		            <li><a href="deleteAllClients.jsp">Delete all clients</a></li>
 		            <li><a href="getAllClients.jsp">Show all clients</a></li>
 		            <li><a href="updateClientByIdData.jsp">Update client</a></li> 
-		            <li><a href="#">Delete client by id</a></li> 
+		            <li><a href="deleteClientByIdData.jsp">Delete client by id</a></li> 
 		          </ul>
 		        </li>
     		    <li class="dropdown">
@@ -36,7 +36,7 @@
 		            <li><a href="../product/deleteAllProducts.jsp">Delete all products</a></li>
 		            <li><a href="../product/getAllProducts.jsp">Show all products</a></li>
 		            <li><a href="../product/updateProductByIdData.jsp">Update product</a></li> 
-		            <li><a href="#">Delete product by id</a></li> 
+		            <li><a href="../product/deleteProductByIdData.jsp">Delete product by id</a></li> 
 		          </ul>
 		        </li>
 		        <li class="dropdown">

@@ -22,6 +22,7 @@ public class ProductManager {
 	private PreparedStatement deleteAllProductsStmt;
 	private PreparedStatement getAllProductsStmt;
 	private PreparedStatement updateProductByIdStmt;
+	private PreparedStatement deleteProductByIdStmt;
 
 	private Statement statement;
 	
@@ -47,6 +48,7 @@ public class ProductManager {
 			getAllProductsStmt = connect.prepareStatement("SELECT * FROM product;");
 			deleteAllProductsStmt = connect.prepareStatement("DELETE FROM product;");
 			updateProductByIdStmt = connect.prepareStatement("UPDATE product SET productname = ?, price = ?, category = ?, isavaiable = ? WHERE id = ?");
+			deleteProductByIdStmt = connect.prepareStatement("DELETE FROM product WHERE id = ?");
 			
 		} catch (SQLException ex){
 			ex.printStackTrace();
@@ -108,5 +110,14 @@ public class ProductManager {
 			e.printStackTrace();
 		}
 		return count;
+	}
+	
+	public void deleteProductById(Product idProduct){
+		try {
+			deleteProductByIdStmt.setLong(1, idProduct.getId());
+			deleteProductByIdStmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
