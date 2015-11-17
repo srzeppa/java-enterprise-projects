@@ -25,6 +25,7 @@
 		            <li><a href="../client/getAllClients.jsp">Show all clients</a></li>
 		            <li><a href="../client/updateClientByIdData.jsp">Update client</a></li> 
 		            <li><a href="../client/deleteClientByIdData.jsp">Delete client by id</a></li> 
+		            <li><a href="../client/getClientByLastnameData.jsp">Show client by lastname</a></li>
 		          </ul>
 		        </li>
     		    <li class="dropdown">
