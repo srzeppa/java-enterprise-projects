@@ -53,5 +53,8 @@
 		    </div>
 		  </div>
 		</nav>
+		
+		<jsp:useBean id="greetingServlet" class="web.GreetingServlet" scope="request" />
+		<p>Msg:<jsp:setProperty name="msg" property="*"/></p>
     </body>
 </html>
