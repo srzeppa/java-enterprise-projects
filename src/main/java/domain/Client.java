@@ -1,11 +1,13 @@
 package domain;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
 	
 	private long id;
-	private String firstname = " ";
-	private String lastname = " ";
-	private int pesel = 0;
+	private String firstname;
+	private String lastname;
+	private int pesel;
 			
 	public Client(){
 		

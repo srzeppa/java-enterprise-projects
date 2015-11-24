@@ -22,13 +22,13 @@ public class QuestionaireServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 	
 		/*Printing simple form and "sending" it to second servlet*/
-		out.println("<html><body><h2>Survey</h2>" +
+		out.println("<html><body><h2>Ankieta.</h2>" +
 				"<form action='data'>" +
-				"Sex: <br /> <input type='radio' name='sex' id='male' value='Male'>" +
-				"<label for='male'>Male</label>" +
+				"Plec: <br /> <input type='radio' name='sex' id='male' value='Male'>" +
+				"<label for='male'>Mezczyzna</label>" +
 				"<input type='radio' name='sex' id='male' value='Female'>" +
-				"<label for='female'>Female</label> <br /> <br />" +
-				"In scale from 1 (terrible) to 5 (great) tell us what do you think about your last visit in our cybercafe <br /> <br />" +
+				"<label for='female'>Kobieta</label> <br /> <br />" +
+				"Jak bardzo zadowolony jestes z naszej obslugi? <br /> <br />" +
 				"<input type='radio' name='rate' id='1' value='1'> <input type='radio' name='rate' id='2' value='2'> <input type='radio' name='rate' id='3' value='3'> <input type='radio' name='rate' id='4' value='4'> <input type='radio' name='rate' id='5' value='5'>" +
 				"<br />  <br /> <textarea name='info' rows='4' cols='50'></textarea>" +
 				"<input type='submit' value=' OK ' />" +

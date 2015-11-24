@@ -47,7 +47,8 @@
 		            <li><a href="purchase/deleteAllPurchases.jsp">Delete all purchases</a></li>
 		            <li><a href="purchase/getAllPurchases.jsp">Show all purchases</a></li>
 		          </ul>
-		        </li> 
+		        </li>
+		        <li><a href="questionaire">Ankieta</a></li> 
 		      </ul>
 		    </div>
 		  </div>

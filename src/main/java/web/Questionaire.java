@@ -24,17 +24,18 @@ public class Questionaire extends HttpServlet {
 		/*Simple information handling*/
 		if(request.getParameter("rate").equals("5")){
 			
-		out.println("<html><body><h2>Add client</h2>" +
-				"<p>Sex: " + request.getParameter("sex") + "<br />" +
-				"<p>Rate: " + request.getParameter("rate") + "<br /> THANK YOU! <br />" +
-				"<p>Additional information: " + request.getParameter("info") + "<br />" +
+		out.println("<html><body><h2>Ankieta</h2>" +
+				"<p>Prosimy o wypelnienie nastepujacej ankiety:</p>" +
+				"<p>Plec: " + request.getParameter("sex") + "<br />" +
+				"<p>Ocena: " + request.getParameter("rate") + "<br /> Dziękujemy <br />" +
+				"<p>Informacje dodatkowe: " + request.getParameter("info") + "<br />" +
 				"</body></html>");
 		out.close();
 		}
 		out.println("<html><body><h2>Add client</h2>" +
-				"<p>Sex: " + request.getParameter("sex") + "<br />" +
-				"<p>Rate: " + request.getParameter("rate") + "<br />" +
-				"<p>Additional information: " + request.getParameter("info") + "<br />" +
+				"<p>Plec: " + request.getParameter("sex") + "<br />" +
+				"<p>Ocena: " + request.getParameter("rate") + "<br />" +
+				"<p>Informacje dodatkowe: " + request.getParameter("info") + "<br />" +
 				"</body></html>");
 		out.close();
 		

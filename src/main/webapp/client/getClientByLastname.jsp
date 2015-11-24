@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse">
 		  <div class="container-fluid">
 		    <div class="navbar-header">
 		      <p class="navbar-brand">Sports shop</p>
@@ -69,7 +69,7 @@
 	String lastname = request.getParameter("lastname");
   	for (Client client : storageClient.getAllClients()) {
 	  
-	  if(client.getFirstname().equals(lastname)){
+	  if(client.getLastname().equals(lastname)){
 		  out.println("<tr>");
 		  out.println("<td>" + client.getFirstname() + "</td><td>" + client.getLastname() + "</td><td>" + client.getPesel() + "</td>");
 		  out.println("</tr>");
