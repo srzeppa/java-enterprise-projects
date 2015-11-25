@@ -9,6 +9,13 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<title>Insert title here</title>
+		        <script>
+            function confirmGo(m,u) {
+                if ( confirm(m) ) {
+                    window.location = u;
+                }
+            }
+        </script>
 	</head>
 	<body>
 	
@@ -60,6 +67,7 @@
 			<td>First name</td>
 			<td>Last name</td>
 			<td>Pesel</td>
+			<td>Delete</td>
 		</tr>
 		
 <%-- 		<% 
@@ -71,7 +79,7 @@
 			  out.close();
 			%>  --%>
 		<c:forEach var="client" items="${managerClient.allClients}">
-		   <tr><td><c:out value="${client.id}"/></td><td><c:out value="${client.firstname}"/></td><td><c:out value="${client.lastname}"/></td><td><c:out value="${client.pesel}"/></td></tr>
+		   <tr><td><c:out value="${client.id}"/></td><td><c:out value="${client.firstname}"/></td><td><c:out value="${client.lastname}"/></td><td><c:out value="${client.pesel}"/></td><td><a class="btn btn-danger" href="javascript:confirmGo('Sure to delete this record?','deleteClientById.jsp?id=<c:out value="${client.id}"/>')">Delete</a></td></tr>
 		</c:forEach>
 			
 		</table>
